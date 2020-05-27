@@ -1,4 +1,7 @@
 # final base image
+ARG SCHOLARS_DISCOVERY_BUILD_IMAGE_NAME
+ARG SCHOLARS_DISCOVERY_REPO_TAG
+FROM ${SCHOLARS_DISCOVERY_BUILD_IMAGE_NAME}:${SCHOLARS_DISCOVERY_REPO_TAG} as discovery-scholars-build
 FROM openjdk:8u171-jre-alpine
 
 # set deployment directory
@@ -8,7 +11,7 @@ WORKDIR /scholars
 RUN mkdir -p /scholars/vivo_backup
 
 # copy over the built artifact from the maven image
-COPY /target/middleware*.jar ./scholars-discovery.jar
+COPY --from=discovery-scholars-build /target/middleware*.jar ./scholars-discovery.jar
 
 # set the startup command to run your binary
 CMD ["java", "-jar", "./scholars-discovery.jar"]
