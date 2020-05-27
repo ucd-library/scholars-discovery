@@ -1,7 +1,7 @@
 # final base image
 ARG SCHOLARS_DISCOVERY_BUILD_IMAGE_NAME
 ARG SCHOLARS_DISCOVERY_REPO_TAG
-FROM ${SCHOLARS_DISCOVERY_BUILD_IMAGE_NAME}:${SCHOLARS_DISCOVERY_REPO_TAG} as discovery-scholars-build
+FROM ucdlib/${SCHOLARS_DISCOVERY_BUILD_IMAGE_NAME}:${SCHOLARS_DISCOVERY_REPO_TAG} as discovery-scholars-build
 FROM openjdk:8u171-jre-alpine
 
 # set deployment directory
