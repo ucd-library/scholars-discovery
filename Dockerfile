@@ -8,7 +8,7 @@ COPY ./pom.xml ./pom.xml
 COPY ./src ./src
 
 # build
-RUN mvn package
+RUN mvn package -Dmaven.test.skip=true
 
 # final base image
 FROM openjdk:8u171-jre-alpine
